@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "@reach/dialog/styles.css";
-import { Dialog, DialogOverlay, DialogContent } from "@reach/dialog";
+import { Dialog } from "@reach/dialog";
 
 const Popup = ({ isPopup, closeModal, className }) => {
   const [isPressed, setIsPressed] = useState(false);
