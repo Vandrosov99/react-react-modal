@@ -1,17 +1,26 @@
-import React from "react";
-import Modal from "react-modal";
+import React, { useState } from "react";
+import "@reach/dialog/styles.css";
+import { Dialog, DialogOverlay, DialogContent } from "@reach/dialog";
 
 const Popup = ({ isPopup, closeModal, className }) => {
-  const appEl = document.querySelector("#app");
-  Modal.setAppElement(appEl);
+  const [isPressed, setIsPressed] = useState(false);
 
   return (
-    <Modal isOpen={isPopup} onRequestClose={closeModal} style={className}>
-      <div role='status' aria-label='Test text'>
-        <h1>Popup header</h1>
-        <button onClick={closeModal}>Close popup</button>
+    <Dialog isOpen={isPopup} onDismiss={closeModal}>
+      <div role='status' aria-label={isPressed ? "Enable" : "Disable"}>
+        {isPressed ? "lolE" : "lolD"}
       </div>
-    </Modal>
+      <button className='close-button' onClick={closeModal}>
+        <span>Close</span>
+        <span aria-hidden>×</span>
+      </button>
+      <button
+        onClick={() => {
+          setIsPressed(!isPressed);
+        }}>
+        updateState
+      </button>
+    </Dialog>
   );
 };
 
